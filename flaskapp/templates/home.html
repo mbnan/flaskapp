@@ -1,0 +1,24 @@
+{%extends 'layout.html'%}
+
+{%  block body %}
+
+<B>
+    {% with messages = get_flashed_messages(category_filter=["message"]) %}
+    {% if messages %}
+    <div class="alert-message block-message message">
+        <a class="close" href="#">×</a>
+        <ul>
+            {% for msg in messages %}
+            {{ msg }}
+            {% endfor -%}
+        </ul>
+    </div>
+    {% endif %}
+    {% endwith %}
+</B>
+
+<div class="jumbotron text-center">
+    <h1>Welcome To My First FlaskApp</h1>
+    <p class="lead">This app is built on the Python Flask Framework. </p>
+</div>
+{% endblock %}

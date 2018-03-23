@@ -1,0 +1,26 @@
+{%extends 'layout.html'%}
+
+{%  block body %}
+
+<script>
+
+</script>
+
+<div data-ng-app="" data-ng-init="firstName='John'">
+
+<p>The name is <span data-ng-bind="firstName"></span></p>
+
+</div>
+
+<table class="table table-bordered">
+    <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Password</th>
+    </tr>
+    <tr ng-repeat="person in user">
+
+    </tr>
+</table>
+
+{% endblock %}

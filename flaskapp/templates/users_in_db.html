@@ -1,0 +1,49 @@
+{%extends 'layout.html'%}
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">User Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Password</th>
+      <th scope="col">Email</th>
+      <th scope="col">Registration Date</th>
+      <th scope="col">Address</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  {% set num = 0 %}
+  {% for user in userList %}
+    {% set num = num + 1 %}
+    <tr>
+        <th scope="row">
+            {{num}}
+        </th>
+        <td>
+            {{user.get_id()}}
+        <td>
+        <td>
+            {{user.get_name()}}
+        </td>
+        <td>
+             {{user.get_passwd()}}
+        </td>
+        <td>
+             {{user.get_email()}}
+        </td>
+        <td>
+             {{user.get_reg_date()}}
+        </td>
+        <td>
+             {{user.get_address()}}
+        </td>
+    </tr>
+
+  {% endfor %}
+
+  </tbody>
+</table>
+
+{% endblock %}

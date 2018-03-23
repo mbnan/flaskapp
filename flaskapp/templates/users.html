@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <style>
+        table, th, td
+        {
+            margin:10px 0;
+            border:solid 1px #333;
+            padding:2px 4px;
+            font:15px Verdana;
+        }
+        th {
+            font-weight:bold;
+        }
+    </style>
+
+</head>
+<script src="../static/js/jquery-dev.js"></script>
+<script>
+$(document).ready(function() {
+    $.ajax({
+    type : "GET",
+    url : "/usersInDB",
+    dataType: 'json',
+    success: function(data) {
+
+        var tableDataArray = [["ID", "Name", "Password" ,"Email" , "Registration Date" , "Address"]]
+
+        for (var i = 0; i < Object.keys(data).length ; i++){
+            var cols = [];
+            cols.push(data[i].id);
+            cols.push(data[i].name);
+            cols.push(data[i].password);
+            cols.push(data[i].email);
+            cols.push(data[i].regdate);
+            cols.push(data[i].address);
+
+            tableDataArray.push(cols);
+        }
+
+         var table = makeTable($(document.body), tableDataArray);
+
+    }
+});
+
+
+ function makeTable(container, data) {
+    var table = $("<table/>").addClass('CSSTableGenerator');
+    $.each(data, function(rowIndex, r) {
+        var row = $("<tr/>");
+        $.each(r, function(colIndex, c) {
+            row.append($("<t"+(rowIndex == 0 ?  "h" : "d")+"/>").text(c));
+        });
+        table.append(row);
+    });
+    return container.append(table);
+}
+
+  });
+</script>
+<body>
+ {% include 'includes/_navbar.html' %}
+<h1>Users</h1>
+
+</body>
+</html>

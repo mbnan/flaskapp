@@ -1,0 +1,63 @@
+{%extends 'layout.html'%}
+
+
+{%  block body %}
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">User Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Password</th>
+      <th scope="col">Email</th>
+      <th scope="col">Registration Date</th>
+      <th scope="col">Address</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr>
+      <th scope="row">0</th>
+      <td>000</td>
+      <td>Thornton</td>
+        <td>pass</td>
+        <td>@email</td>
+        <td>date</td>
+        <td>addr</td>
+
+    </tr>
+
+    {% set num = 0 %}
+  {% for key,user in userdict.items() %}
+    {% set num = num + 1 %}
+    <tr>
+        <th scope="row">
+            {{num}}
+        </th>
+        <td>
+            {{key}}
+        <td>
+        <td>
+            {{user.get_name()}}
+        </td>
+        <td>
+             {{user.get_passwd()}}
+        </td>
+        <td>
+             {{user.get_email()}}
+        </td>
+        <td>
+             {{user.get_reg_date()}}
+        </td>
+        <td>
+             {{user.get_address()}}
+        </td>
+    </tr>
+
+  {% endfor %}
+
+  </tbody>
+</table>
+
+{% endblock %}
